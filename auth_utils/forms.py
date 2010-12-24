@@ -40,6 +40,10 @@ class RegistrationForm(forms.Form):
         return self.cleaned_data
 
     def create_user(self):
+        """
+        Creates a new user from the existing form, generating a unique username
+        based on the user's email address.
+        """
         if self.errors:
             raise forms.ValidationError("Unable to create user "
                                         "because the data is invalid")
