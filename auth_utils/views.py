@@ -43,10 +43,13 @@ def signup(request, template_name='registration/signup.html',
                 redirect_to = settings.LOGIN_REDIRECT_URL
 
             # Okay, security checks complete. Sign up
+            # We need to use the password out of the form
+            # because authenticate() requires it to be in plaintext.
+            password = form.cleaned_data['password1']
             new_user = form.create_user()
             # This is required to set the auth backend.
-            new_user = authenticate(username=new_user.username,
-                                    password=new_user.password)
+            new_user = authenticate(username=new_user.email,
+                                    password=password)
             # Log in the user.
             login(request, new_user)
 
