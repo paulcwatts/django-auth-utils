@@ -74,7 +74,3 @@ def signup(request, template_name='registration/signup.html',
     return render_to_response(template_name, context,
                               context_instance=RequestContext(request, current_app=current_app))
 
-
-def redirect_to_profile(request):
-    return redirect(reverse('profile',
-                            kwargs={ 'username': request.user.username }))

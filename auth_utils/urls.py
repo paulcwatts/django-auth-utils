@@ -3,7 +3,6 @@ from django.contrib.auth import views as auth
 
 urlpatterns = patterns('',
     url(r'^signup/$', 'auth_utils.views.signup', name='account_signup'),
-    url(r'^profile/$', 'auth_utils.views.redirect_to_profile'),
 
     # Auth urls
     url(r'^signin/$',
