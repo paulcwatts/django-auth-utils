@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
 
 def _get_username(basename):
+    # Truncate the basename to 27 characters
+    # (The username is only 30 characters)
+    basename=basename[:27]
     try:
         # First just try their username
         User.objects.get(username=basename)
